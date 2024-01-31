@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Categorie: Orchestranti</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Orchestranti</h1>
+    <a href="/orchestranti/new">Introduceti un orchestrant </a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID orchestrant</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Data nasterii</th>
+            <th>Data angajarii</th>
+            <th>ID instrument</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="orchestrant : ${listaOrchestra}">
+            <td th:text="${orchestrant.id_orchestrant}">ID orchestrant</td>
+            <td th:text="${orchestrant.nume}">Nume</td>
+            <td th:text="${orchestrant.prenume}">Prenume</td>
+            <td th:text="${orchestrant.data_nasterii}">Data nasterii</td>
+            <td th:text="${orchestrant.data_angajarii}">Data angajarii</td>
+            <td th:text="${orchestrant.id_instrument}">ID instrument</td>
+            <td>
+                <a th:href="@{'/recuzita/edit/' + ${orchestrant.id_orchestrant}}">Editeaza orchestrantul</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/recuzita/delete/' + ${orchestrant.id_orchestrant}}">Sterge orchestrantul</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

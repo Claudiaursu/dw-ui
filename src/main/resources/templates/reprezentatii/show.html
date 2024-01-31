@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Reprezentatii</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Lista Reprezentatii</h1>
+    <br />
+    <a th:href="@{/reprezentatii/new}">Adauga Noua Reprezentatie</a>
+    <br/> <br />
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>ID Reprezentatie</th>
+            <th>ID Piesa Teatru Regizor</th>
+            <th>Data si Ora Reprezentatiei</th>
+            <th>Numar Locuri</th>
+            <th>Actiuni</th>
+        </tr>
+        <tr th:each="reprezentatie : ${listaReprezentatii}">
+            <td th:text="${reprezentatie.id_reprezentatie}"></td>
+            <td th:text="${reprezentatie.id_piesa_teatru_regizor}"></td>
+            <td th:text="${reprezentatie.data_ora_reprezentatie}"></td>
+            <td th:text="${reprezentatie.nr_locuri}"></td>
+            <td>
+                <a th:href="@{'/reprezentatii/edit/' + ${reprezentatie.id_reprezentatie}}">Editeaza</a>
+                |
+                <a th:href="@{'/reprezentatii/delete/' + ${reprezentatie.id_reprezentatie}}">Sterge</a>
+            </td>
+        </tr>
+    </table>
+    <br />
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Judete</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"></div>
+    <h1>Judete</h1>
+    <a href="/judete/new">Adauga judet nou</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID judet</th>
+            <th>Denumire</th>
+            <th>ID tara</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="judet : ${listJudete}">
+            <td th:text="${judet.id_judet}">ID judet</td>
+            <td th:text="${judet.denumire}">Denumire</td>
+            <td th:text="${judet.id_tara}">ID tara</td>
+            <td>
+                <a th:href="@{'/judete/edit/' + ${judet.id_judet}}">Editeaza judet</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/judete/delete/' + ${judet.id_judet}}">Sterge judet</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

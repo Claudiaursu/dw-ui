@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Regizori</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Regizori</h1>
+    <a href="/regizori/new">Introduceti un regizor nou</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID regizor</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Data nasterii</th>
+            <th>Data angajarii</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="regizor : ${listaRegizori}">
+            <td th:text="${regizor.id_regizor}">ID regizor</td>
+            <td th:text="${regizor.nume}">Nume</td>
+            <td th:text="${regizor.prenume}">Prenume</td>
+            <td th:text="${#dates.format(regizor.data_nasterii, 'dd-MMM-yyyy')}">Data nasterii</td>
+            <td th:text="${#dates.format(regizor.data_angajarii, 'dd-MMM-yyyy')}">Data angajarii</td>
+            <td>
+                <a th:href="@{'/regizori/edit/' + ${regizor.id_regizor}}">Editeaza regizor</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/regizori/delete/' + ${regizor.id_regizor}}">Sterge regizor</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

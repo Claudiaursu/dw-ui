@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Editare Categorie</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"></div>
+    <h1>Editare Categorie</h1>
+    <br/>
+    <form action="#" th:action="@{/categorie/update}" th:object="${categorie}" method="post">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>ID:</td>
+                <td><input type="number" th:field="*{id_categorie}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>Tip Spectator:</td>
+                <td><input type="text" th:field="*{tip_spectator}" /></td>
+            </tr>
+            <tr>
+                <td>Pret:</td>
+                <td><input type="number" th:field="*{pret}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Salvează</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

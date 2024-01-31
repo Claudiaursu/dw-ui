@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Listă Acte Orchestranți</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Acte Orchestranți</h1>
+    <a href="/act_orchestrants/new">Adăugați un nou act orchestrant</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID Act</th>
+            <th>ID Orchestrant</th>
+            <th>Acțiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="actOrchestrant : ${listActOrchestrants}">
+            <td th:text="${actOrchestrant.id_act}">ID Act</td>
+            <td th:text="${actOrchestrant.id_orchestrant}">ID Orchestrant</td>
+            <td>
+                <a th:href="@{'/act_orchestrants/delete/' + ${actOrchestrant.id_act}}">Șterge</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

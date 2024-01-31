@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Piesa Teatru Regizor List</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Piesa-Teatru-Regizor</h1>
+    <a href="/regie/new">Adauga o noua relatie Piesa-Teatru-Regizor</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID Piesa Teatru Regizor</th>
+            <th>ID Piesa</th>
+            <th>ID Teatru</th>
+            <th>ID Regizor</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="piesa_teatru_regizor : ${listPiesaTeatruRegizor}">
+            <td th:text="${piesa_teatru_regizor.id_piesa_teatru_regizor}">ID Piesa Teatru Regizor</td>
+            <td th:text="${piesa_teatru_regizor.id_piesa}">ID Piesa</td>
+            <td th:text="${piesa_teatru_regizor.id_teatru}">ID Teatru</td>
+            <td th:text="${piesa_teatru_regizor.id_regizor}">ID Regizor</td>
+            <td>
+                <a th:href="@{'/regie/edit/' + ${piesa_teatru_regizor.id_piesa_teatru_regizor}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/regie/delete/' + ${piesa_teatru_regizor.id_piesa_teatru_regizor}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

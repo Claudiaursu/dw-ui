@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sales Manager Application</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Actori</h1>
+    <a href="/actori/new">Introduceti un actor nou</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID actor</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Data nasterii</th>
+            <th>Data angajarii</th>
+            <th>Sex</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="actor : ${listaActori}">
+            <td th:text="${actor.id_actor}">ID actor</td>
+            <td th:text="${actor.nume}">Nume</td>
+            <td th:text="${actor.prenume}">Prenume</td>
+            <td th:text="${#dates.format(actor.data_nasterii, 'dd-MMM-yyyy')}">Data nasterii</td>
+            <td th:text="${#dates.format(actor.data_angajarii, 'dd-MMM-yyyy')}">Data angajarii</td>
+            <td th:text="${actor.sex}">Sex</td>
+            <td>
+                <a th:href="@{'/actori/edit/' + ${actor.id_actor}}">Editeaza actor</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/actori/delete/' + ${actor.id_actor}}">Sterge actor</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

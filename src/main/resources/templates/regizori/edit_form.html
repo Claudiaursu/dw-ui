@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Editare regizor</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Editati regizorul</h1>
+    <br />
+    <form action="#" th:action="@{/regizori/update}" th:object="${regizor}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>ID regizor:</td>
+                <td><input type="number" th:field="*{id_regizor}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>Nume:</td>
+                <td><input type="text" th:field="*{nume}" /></td>
+            </tr>
+            <tr>
+                <td>Prenume:</td>
+                <td><input type="text" th:field="*{prenume}" /></td>
+            </tr>
+            <tr>
+                <td>Data nasterii:</td>
+                <td><input type="date" th:field="*{data_nasterii}" /></td>
+            </tr>
+            <tr>
+                <td>Data angajarii:</td>
+                <td><input type="date" th:field="*{data_angajarii}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>

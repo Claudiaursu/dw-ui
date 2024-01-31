@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Editare melodii</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Editati melodia</h1>
+    <br />
+    <form action="#" th:action="@{/melodii/update}" th:object="${melodie}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>ID melodie:</td>
+                <td><input type="number" th:field="*{id_melodie}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>Titlu:</td>
+                <td><input type="text" th:field="*{titlu}" /></td>
+            </tr>
+            <tr>
+                <td>Autor:</td>
+                <td><input type="text" th:field="*{autor}" /></td>
+            </tr>
+            <tr>
+                <td>Durata</td>
+                <td><input type="number" step="0.01" th:field="*{durata}" /></td>
+            </tr>
+            <tr>
+                <td>Gen:</td>
+                <td><input type="text" th:field="*{gen}" /></td>
+            </tr>
+            <tr>
+                <td>ID act:</td>
+                <td><input type="number" th:field="*{id_act}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>

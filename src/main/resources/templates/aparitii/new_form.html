@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Noua Aparitie</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Introduceti o noua aparitie</h1>
+    <br />
+    <form action="#" th:action="@{/aparitii/save}" th:object="${aparitie}" method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>ID Obiect Vestimentar:</td>
+                <td><input type="number" th:field="*{id_obiect_vestimentar}" /></td>
+            </tr>
+            <tr>
+                <td>ID Actor:</td>
+                <td><input type="number" th:field="*{id_actor}" /></td>
+            </tr>
+            <tr>
+                <td>ID Reprezentatie:</td>
+                <td><input type="number" th:field="*{id_reprezentatie}" /></td>
+            </tr>
+            <!-- id_aparitie field is not present for new records -->
+            <tr th:if="${aparitie.id_aparitie == null}">
+                <td>ID Aparitie:</td>
+                <td>(Auto-generated)</td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

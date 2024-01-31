@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Acte</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"></div>
+    <h1>Acte</h1>
+    <a href="/acte/new">Adăugați un act nou</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID Act</th>
+            <th>Durata</th>
+            <th>ID Piesa Teatru Regizor</th>
+            <th>Acțiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="act : ${listActe}">
+            <td th:text="${act.id_act}">ID Act</td>
+            <td th:text="${act.durata}">Durata</td>
+            <td th:text="${act.id_piesa_teatru_regizor}">ID Piesa Teatru Regizor</td>
+            <td>
+                <a th:href="@{'/acte/edit/' + ${act.id_act}}">Editare act</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/acte/delete/' + ${act.id_act}}">Șterge act</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

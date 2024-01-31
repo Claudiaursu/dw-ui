@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Editare piese</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Editati piesa</h1>
+    <br />
+    <form action="#" th:action="@{/piese/update}" th:object="${piesa}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Id piesa:</td>
+                <td><input type="number" th:field="*{id_piesa}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>Numele piesei:</td>
+                <td><input type="text" th:field="*{titlu_piesa}" /></td>
+            </tr>
+            <tr>
+                <td>Gen:</td>
+                <td><input type="text" th:field="*{gen_piesa}" /></td>
+            </tr>
+            <tr>
+                <td>Descriere:</td>
+                <td><input type="text" th:field="*{descriere}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>

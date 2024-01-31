@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Spectator Categories</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"></div>
+    <h1>Categorii de bilete</h1>
+    <a href="/categorie/new">Adauga categorie noua</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID categorie</th>
+            <th>Tip spectator</th>
+            <th>Pret</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="categorie : ${listCategorie}">
+            <td th:text="${categorie.id_categorie}">ID</td>
+            <td th:text="${categorie.tip_spectator}">Spectator Type</td>
+            <td th:text="${categorie.pret}">Price</td>
+            <td>
+                <a th:href="@{'/categorie/edit/' + ${categorie.id_categorie}}">Editeaza categoria</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/categorie/delete/' + ${categorie.id_categorie}}">Sterge categoria</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

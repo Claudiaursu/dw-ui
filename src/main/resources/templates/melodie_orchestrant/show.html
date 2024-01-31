@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Melodie_Orchestrant</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Tabel asociativ Melodie_Orchestrant</h1>
+    <a href="/melodie_orchestrant/new">Introduceti o noua legatura melodie-orchestrant</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID melodie</th>
+            <th>ID orchestrant</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mel_om : ${listaMuzicanti}">
+            <td th:text="${mel_om.id_melodie}">ID melodie</td>
+            <td th:text="${mel_om.id_orchestrant}">ID orchestrant</td>
+            <td>
+                <a th:href="@{'/melodie_orchestrant/edit/' + ${mel_om.id_melodie}+ ${mel_om.id_orchestrant}}">Editeaza inregistrarea</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/melodie_orchestrant/delete/' + ${mel_om.id_melodie}+ ${mel_om.id_orchestrant}}">Sterge inregistrarea</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Instrument nou</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Introduceti un instrument nou</h1>
+    <br />
+    <form action="#" th:action="@{/instrumente/save}" th:object="${instrument}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Denumire:</td>
+                <td><input type="text" th:field="*{denumire}" /></td>
+            </tr>
+            <tr>
+                <td>Greutate:</td>
+                <td><input type="number" step="1" th:field="*{greutate}" /></td>
+            </tr>
+            <tr>
+                <td>Tip:</td>
+                <td><input type="text" th:field="*{tip}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>

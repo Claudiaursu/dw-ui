@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Add New Teatru</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Add New Teatru</h1>
+    <br />
+    <form action="#" th:action="@{/teatre/save}" th:object="${teatru}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Denumire:</td>
+                <td><input type="text" th:field="*{denumire}" /></td>
+            </tr>
+            <tr>
+                <td>Adresa:</td>
+                <td><input type="text" th:field="*{adresa}" /></td>
+            </tr>
+            <tr>
+                <td>ID Localitate:</td>
+                <td><input type="number" th:field="*{id_localitate}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

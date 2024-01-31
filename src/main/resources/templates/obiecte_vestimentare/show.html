@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Obiecte vestimentare</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Obiecte vestimentare</h1>
+    <a href="/obiecte_vestimentare/new">Introduceti un obiect vestimentar nou</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID obiect vestimentar</th>
+            <th>Denumire</th>
+            <th>Culoare</th>
+            <th>Material</th>
+            <th>Marime</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="haina : ${listaHaine}">
+            <td th:text="${haina.id_obiect_vestimentar}">ID obiect vestimentar</td>
+            <td th:text="${haina.denumire}">Denumire</td>
+            <td th:text="${haina.culoare}">Culoare</td>
+            <td th:text="${haina.material}">Material</td>
+            <td th:text="${haina.marime}">Marime</td>
+            <td>
+                <a th:href="@{'/obiecte_vestimentare/edit/' + ${haina.id_obiect_vestimentar}}">Editeaza articolul</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/obiecte_vestimentare/delete/' + ${haina.id_obiect_vestimentar}}">Sterge articolul</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

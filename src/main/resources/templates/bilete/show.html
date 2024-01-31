@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Bilete List</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Bilete</h1>
+    <a href="/bilete/new">Introduceti un nou bilet</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID Bilet</th>
+            <th>ID Reprezentatie</th>
+            <th>ID Categorie</th>
+            <th>Loc</th>
+            <th>Data Achizitie</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bilet : ${listaBilete}">
+            <td th:text="${bilet.id_bilet}">ID Bilet</td>
+            <td th:text="${bilet.id_reprezentatie}">ID Reprezentatie</td>
+            <td th:text="${bilet.id_categorie}">ID Categorie</td>
+            <td th:text="${bilet.loc}">Loc</td>
+            <td th:text="${#dates.format(bilet.data_achizitie, 'dd-MMM-yyyy')}">Data Achizitie</td>
+            <td>
+                <a th:href="@{'/bilete/edit/' + ${bilet.id_bilet}}">Editeaza bilet</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/bilete/delete/' + ${bilet.id_bilet}}">Sterge bilet</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

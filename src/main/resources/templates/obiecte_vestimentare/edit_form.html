@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Editare obiect vestimentar</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Editati obiectul vestientar</h1>
+    <br />
+    <form action="#" th:action="@{/obiecte_vestimentare/update}" th:object="${haina}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>ID obiect vestimentar:</td>
+                <td><input type="number" th:field="*{id_obiect_vestimentar}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>Denumire:</td>
+                <td><input type="text" th:field="*{denumire}" /></td>
+            </tr>
+            <tr>
+                <td>Culoare:</td>
+                <td><input type="text" th:field="*{culoare}" /></td>
+            </tr>
+            <tr>
+                <td>Material:</td>
+                <td><input type="text" th:field="*{material}" /></td>
+            </tr>
+            <tr>
+                <td>Marime:</td>
+                <td><input type="text" th:field="*{marime}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>

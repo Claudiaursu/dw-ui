@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Categorie: Decoreaza</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Tabel asociativ Decoreaza</h1>
+    <a href="/decoreaza/new">Introduceti o noua legatura act-recuzita</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID act</th>
+            <th>ID recuzita</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="decor : ${listaDecor}">
+            <td th:text="${decor.id_act}">ID act</td>
+            <td th:text="${decor.id_recuzita}">ID recuzita</td>
+            <td>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/decoreaza/delete/' + ${decor.id_act}+ '/' + ${decor.id_recuzita}}">Sterge inregistrarea</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

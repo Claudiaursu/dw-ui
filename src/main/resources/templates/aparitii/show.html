@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Aparitii List</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Aparitii</h1>
+    <a href="/aparitii/new">Introduceti o noua aparitie</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID Aparitie</th>
+            <th>ID Obiect Vestimentar</th>
+            <th>ID Actor</th>
+            <th>ID Reprezentatie</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aparitie : ${listaAparitii}">
+            <td th:text="${aparitie.id_aparitie}">ID Aparitie</td>
+            <td th:text="${aparitie.id_obiect_vestimentar}">ID Obiect Vestimentar</td>
+            <td th:text="${aparitie.id_actor}">ID Actor</td>
+            <td th:text="${aparitie.id_reprezentatie}">ID Reprezentatie</td>
+            <td>
+                <a th:href="@{'/aparitii/edit/' + ${aparitie.id_aparitie}}">Editeaza aparitie</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/aparitii/delete/' + ${aparitie.id_aparitie}}">Sterge aparitie</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Categorie: Melodii</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Melodii</h1>
+    <a href="/melodii/new">Introduceti o melodie noua</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID melodie</th>
+            <th>Titlu</th>
+            <th>Autor</th>
+            <th>Durata</th>
+            <th>Gen</th>
+            <th>ID act</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="melodie : ${listaMelodii}">
+            <td th:text="${melodie.id_melodie}">ID melodie</td>
+            <td th:text="${melodie.titlu}">Titlu</td>
+            <td th:text="${melodie.autor}">Autor</td>
+            <td th:text="${melodie.durata}">Durata</td>
+            <td th:text="${melodie.gen}">Gen</td>
+            <td th:text="${melodie.id_act}">ID act</td>
+            <td>
+                <a th:href="@{'/melodii/edit/' + ${melodie.id_melodie}}">Editeaza melodia</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/melodii/delete/' + ${melodie.id_melodie}}">Sterge melodia</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

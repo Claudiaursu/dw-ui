@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Localitati</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Localitate List</h1>
+    <a href="/localitati/new">Introduceti o noua localitate</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID Localitate</th>
+            <th>Denumire</th>
+            <th>ID Judet</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="localitate : ${listLocalitati}">
+            <td th:text="${localitate.id_localitate}">ID Localitate</td>
+            <td th:text="${localitate.denumire}">Denumire</td>
+            <td th:text="${localitate.id_judet}">ID Judet</td>
+            <td>
+                <a th:href="@{'/localitati/edit/' + ${localitate.id_localitate}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/localitati/delete/' + ${localitate.id_localitate}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

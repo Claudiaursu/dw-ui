@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Categorie: Instrumente</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Instrumente opera</h1>
+    <a href="/instrumente/new">Introduceti un instrument nou</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID instrument</th>
+            <th>Denumire</th>
+            <th>Greutate</th>
+            <th>Tip</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="instrument : ${listaInstrumente}">
+            <td th:text="${instrument.id_instrument}">ID instrument</td>
+            <td th:text="${instrument.denumire}">Denumire</td>
+            <td th:text="${instrument.greutate}">Greutate</td>
+            <td th:text="${instrument.tip}">Tip</td>
+            <td>
+                <a th:href="@{'/instrumente/edit/' + ${instrument.id_instrument}}">Editeaza instrumentul</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/instrumente/delete/' + ${instrument.id_instrument}}">Sterge instrumentul</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

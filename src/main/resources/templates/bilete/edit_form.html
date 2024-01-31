@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Editare Bilet</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Editati biletul</h1>
+    <br />
+    <form action="#" th:action="@{/bilete/update}" th:object="${bilet}" method="post">
+
+        <table border="0" cellpadding="10">
+            <tr th:if="${bilet.id_bilet != null}">
+                <td>ID Bilet:</td>
+                <td><input type="number" th:field="*{id_bilet}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td>ID Reprezentatie:</td>
+                <td><input type="number" th:field="*{id_reprezentatie}" /></td>
+            </tr>
+            <tr>
+                <td>ID Categorie:</td>
+                <td><input type="number" th:field="*{id_categorie}" /></td>
+            </tr>
+            <tr>
+                <td>Loc:</td>
+                <td><input type="number" th:field="*{loc}" /></td>
+            </tr>
+            <tr>
+                <td>Data Achizitie:</td>
+                <td><input type="date" th:field="*{data_achizitie}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

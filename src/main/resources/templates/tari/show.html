@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Tari</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Tari</h1>
+    <a href="/tari/new">Introduceti o tara noua</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID tara</th>
+            <th>Denumire tara</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tara : ${listaTari}">
+            <td th:text="${tara.id_tara}">ID tara</td>
+            <td th:text="${tara.denumire}">Denumire tara</td>
+            <td>
+                <a th:href="@{'/tari/edit/' + ${tara.id_tara}}">Editeaza tara</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/tari/delete/' + ${tara.id_tara}}">Sterge tara</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

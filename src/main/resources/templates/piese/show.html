@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Sales Manager Application</title>
+    <style th:replace="/fragments/general.html :: style"></style>
+</head>
+<body>
+<div align="center">
+    <div th:replace="/fragments/general.html :: header"> </div>
+    <h1>Piese</h1>
+    <a href="/piese/new">Introduceti o piesa noua</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID piesa</th>
+            <th>Titlu piesa</th>
+            <th>Gen</th>
+            <th>Descriere</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="piesa_opera : ${lista_opere}">
+            <td th:text="${piesa_opera.id_piesa}">ID piesa</td>
+            <td th:text="${piesa_opera.titlu_piesa}">Titlu piesa</td>
+            <td th:text="${piesa_opera.gen_piesa}">Gen</td>
+            <td th:text="${piesa_opera.descriere}">Descriere</td>
+            <td>
+                <a th:href="@{'/piese/edit/' + ${piesa_opera.id_piesa}}">Editeaza piesa</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/piese/delete/' + ${piesa_opera.id_piesa}}">Sterge piesa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
