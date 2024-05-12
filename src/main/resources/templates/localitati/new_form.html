@@ -3,13 +3,13 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
-    <title>Add New Localitate</title>
+    <title>Adauga o noua Localitate</title>
     <style th:replace="/fragments/general.html :: style"></style>
 </head>
 <body>
 <div align="center">
     <div th:replace="/fragments/general.html :: header"> </div>
-    <h1>Add New Localitate</h1>
+    <h1>Adauga o noua Localitate</h1>
     <br />
     <form action="#" th:action="@{/localitati/save}" th:object="${localitate}"
           method="post">

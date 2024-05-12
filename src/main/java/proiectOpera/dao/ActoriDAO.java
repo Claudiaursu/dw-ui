@@ -66,7 +66,7 @@ public class ActoriDAO {
 
     public void update(Actori actor) {
         String sql = "UPDATE ACTOR SET nume=:nume, prenume=:prenume, data_nasterii=:data_nasterii, " +
-                "data_angajarii=:data_angajarii, tip_actor=:tip_actor WHERE id_actor=:id_actor";
+                "data_angajarii=:data_angajarii, sex=:sex WHERE id_actor=:id_actor";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(actor);
 
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);

@@ -1,5 +1,8 @@
 package proiectOpera.dao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -39,11 +42,26 @@ public class RegizoriDAO {
         Object[] args = {id_regizor};
         Regizori regizor = jdbcTemplate.queryForObject(sql, args,
                 BeanPropertyRowMapper.newInstance(Regizori.class));
+
+        // Format the date fields
+        Date dataNasterii = regizor.getData_nasterii();
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dataNasteriiFormatted = outputFormat.format(dataNasterii);
+
+        try {
+            Date dataNasteriiFinal = outputFormat.parse(dataNasteriiFormatted);
+            regizor.setData_nasterii(dataNasteriiFinal);
+        } catch (ParseException e) {
+            return regizor;
+            //throw new RuntimeException(e);
+        }
+
         return regizor;
     }
 
+
     public void update(Regizori regizor) {
-        String sql = "UPDATE REGIZOR SET nume=:nume, prenume=:prenume, data_nasterii=:data_nasterii,data_angajarii=:data_angajarii, WHERE id_regizor=:id_regizor";
+        String sql = "UPDATE REGIZOR SET nume=:nume, prenume=:prenume, data_nasterii=:data_nasterii,data_angajarii=:data_angajarii WHERE id_regizor=:id_regizor";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(regizor);
 
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
